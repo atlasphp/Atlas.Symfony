@@ -25,6 +25,16 @@ available as a bundle for Symfony 4 projects.
     ATLAS_PDO_PASSWORD=mypassword
     ```
 
+4. Finally, enable the bundle by adding it to your `config/bundles.php` file:
+
+    ```
+    return [
+        Symfony\Bundle\FrameworkBundle\FrameworkBundle::class => ['all' => true],
+        // ...
+        Atlas\Symfony\AtlasBundle::class => ['all' => true],
+    ];
+    ```
+
 (A Symfony Flex recipe to ease installation is forthcoming.)
 
 ## Getting Started
@@ -35,12 +45,12 @@ First, use the command-line tooling to create the skeleton files for all your
 database tables:
 
 ```
-mkdir src/App/DataSource
+mkdir src/DataSource
 php bin/console atlas:skeleton
 ```
 
 The `atlas.yaml` file specifies `App\DataSource\` as the namespace,
-and `src/App/DataSource/` as the directory. To change them, modify the
+and `src/DataSource/` as the directory. To change them, modify the
 `atlas.cli.config.input` values for `directory` and `namespace` as you see fit.
 
 The database table names will be converted to singular for their relevant
