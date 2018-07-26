@@ -1,0 +1,15 @@
+{
+    "name": "atlas/symfony",
+    "type": "symfony-bundle",
+    "description": "Symfony 4 bundle for Atlas 3",
+    "license": "MIT",
+    "require": {
+        "atlas/orm": "~3.0",
+        "atlas/cli": "~2.0"
+    },
+    "autoload": {
+        "psr-4": {
+            "Atlas\\Symfony\\": "./"
+        }
+    }
+}

@@ -1,0 +1,57 @@
+atlas:
+
+    pdo:
+        connection_locator:
+            default:
+                dsn: '%env(resolve:ATLAS_PDO_DSN)%'
+                username: '%env(resolve:ATLAS_PDO_USERNAME)%'
+                password: '%env(resolve:ATLAS_PDO_PASSWORD)%'
+            read:
+                ### add named "read" connections here
+                # read1:
+                #     dsn:
+                #     username:
+                #     password:
+                # read2:
+                #     dsn:
+                #     username:
+                #     password:
+                # read3:
+                #     dsn:
+                #     username:
+                #     password:
+            write:
+                ### add named "write" connections here
+                # write1:
+                #     dsn:
+                #     username:
+                #     password:
+                # write2:
+                #     dsn:
+                #     username:
+                #     password:
+                # write3:
+                #     dsn:
+                #     username:
+                #     password:
+
+    orm:
+        atlas:
+            transaction_class: 'Atlas\Orm\AutoCommit'
+
+    cli:
+        config:
+            input:
+                pdo:
+                    dsn: '%env(resolve:ATLAS_PDO_DSN)%'
+                    username: '%env(resolve:ATLAS_PDO_USERNAME)%'
+                    password: '%env(resolve:ATLAS_PDO_PASSWORD)%'
+                directory: '%kernel.project_dir%/src/DataSource/'
+                namespace: App\DataSource
+                templates: '%kernel.project_dir%/resources/Atlas/templates/'
+        transform:
+            types:
+                ### add `table_name: Type` overrides here
+                # foos: Foo
+                # bars: Bar
+                # bazzes: Baz
