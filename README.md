@@ -3,6 +3,8 @@
 This package makes the [Atlas](http://atlasphp.io) ORM and command-line tooling
 available as a bundle for Symfony 4 projects.
 
+(Atlas is a data mapper for your persistence layer, not your domain layer.)
+
 ## Installation and Configuration
 
 1. In your Symfony 4 project, add `atlas/symfony` as a requirement.
