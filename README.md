@@ -37,6 +37,15 @@ available as a bundle for Symfony 4 projects.
 
 (A Symfony Flex recipe to ease installation is forthcoming.)
 
+> **Note:**
+>
+> If you are using PHPStorm, you may wish to copy the IDE meta file to your
+> project to get full autocompletion on Atlas classes:
+>
+> ```
+> cp ./vendor/atlas/orm/resources/phpstorm.meta.php ./.phpstorm.meta.php
+> ```
+
 ## Getting Started
 
 ### Generating Mappers
