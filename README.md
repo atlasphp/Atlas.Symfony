@@ -7,37 +7,26 @@ available as a bundle for Symfony 4 projects.
 
 ## Installation and Configuration
 
-1. In your Symfony 4 project, add `atlas/symfony` as a requirement.
+1. In your Symfony 4 project, enable contributor recipes:
+
+    ```
+    composer config extra.symfony.allow-contrib true
+    ```
+
+2. Require the `atlas/symfony` package; this will activate a Symfony Flex recipe
+   as part of the installation:
 
     ```
     composer require atlas/symfony ~1.0
     ```
 
-2. Copy the Atlas config file from the bundle to your project.
-
-    ```
-    cp ./vendor/atlas/symfony/Resources/config/atlas.yaml ./config/packages/atlas.yaml
-    ```
-
-3. Add these variables to your `.env` file with your DSN, username, and password:
+3. Edit these new `.env` variables to define your database connection:
 
     ```
     ATLAS_PDO_DSN=mysql:host=myhost;dbname=mydatabase
     ATLAS_PDO_USERNAME=myusername
     ATLAS_PDO_PASSWORD=mypassword
     ```
-
-4. Finally, enable the bundle by adding it to your `config/bundles.php` file:
-
-    ```
-    return [
-        Symfony\Bundle\FrameworkBundle\FrameworkBundle::class => ['all' => true],
-        // ...
-        Atlas\Symfony\AtlasBundle::class => ['all' => true],
-    ];
-    ```
-
-(A Symfony Flex recipe to ease installation is forthcoming.)
 
 > **Note:**
 >
@@ -52,24 +41,25 @@ available as a bundle for Symfony 4 projects.
 
 ### Generating Mappers
 
-First, use the command-line tooling to create the skeleton files for all your
-database tables:
+Use the command-line tooling to create the skeleton files for all your database
+tables:
 
 ```
 mkdir src/DataSource
 php bin/console atlas:skeleton
 ```
 
-The `atlas.yaml` file specifies `App\DataSource\` as the namespace,
-and `src/DataSource/` as the directory. To change them, modify the
+The `config/packages/atlas.yaml` file specifies `App\DataSource\` as the
+namespace, and `src/DataSource/` as the directory. To change them, modify the
 `atlas.cli.config.input` values for `directory` and `namespace` as you see fit.
 
 The database table names will be converted to singular for their relevant
 type names in PHP. If you want a different type names for certain tables,
-modify the `atlas.cli.transform` values in the `atlas.yaml` file.
+modify the `atlas.cli.transform` values in the `atlas.yaml` file to map a
+from table name to a type name.
 
-When you make changes to the database, re-run the skeleton generator, and the
-relevant files will be regenerated.
+As you make changes to the database, re-run the skeleton generator, and the
+relevant table files will be regenerated.
 
 For more information, see <http://atlasphp.io/cassini/skeleton/>.
 
@@ -99,4 +89,26 @@ class ApplicationService
 }
 ```
 
-Full documentation for using Atlas is at <http://atlasphp.io/cassini/orm/>.
+Full documentation for using Atlas is at <http://atlasphp.io/cassini/orm/>:
+
+
+- [Defining relationships between mappers](http://atlasphp.io/cassini/orm/relationships.html)
+
+- [Fetching Records and RecordSets](http://atlasphp.io/cassini/orm/reading.html)
+
+- Working with [Records](http://atlasphp.io/cassini/orm/records.html)
+  and [RecordSets](http://atlasphp.io/cassini/orm/record-sets.html)
+
+- [Managing transactions](http://atlasphp.io/cassini/orm/transactions.html)
+
+- [Adding behaviors](http://atlasphp.io/cassini/orm/behavior.html)
+
+- [Handling events](http://atlasphp.io/cassini/orm/events.html)
+
+- [Direct lower-level queries](http://atlasphp.io/cassini/orm/direct.html)
+
+- [Other topics](http://atlasphp.io/cassini/orm/other.html) such as custom mapper
+  methods, single table inheritance, many-to-many relationships, and automated
+  validation
+
+Enjoy!
