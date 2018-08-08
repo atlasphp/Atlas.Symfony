@@ -37,6 +37,16 @@ available as a bundle for Symfony 4 projects.
 > cp ./vendor/atlas/orm/resources/phpstorm.meta.php ./.phpstorm.meta.php
 > ```
 
+In the `atlas.yaml` config file, these settings are notable:
+
+- `atlas.orm.atlas.log_queries`: set this to `true` to enable the web profiler
+  data collector for query logging.
+
+- `atlas.orm.atlas.transaction_class`: set this to one of the Atlas transaction
+  strategy classes, such as `Atlas\\Orm\\Transaction\\AutoTransact`. For more
+  information, see the
+  [transactions documentation](http://atlasphp.io/cassini/orm/transactions.html#1-1-6-2).
+
 ## Getting Started
 
 ### Generating Mappers
@@ -90,7 +100,6 @@ class ApplicationService
 ```
 
 Full documentation for using Atlas is at <http://atlasphp.io/cassini/orm/>:
-
 
 - [Defining relationships between mappers](http://atlasphp.io/cassini/orm/relationships.html)
 
