@@ -37,7 +37,8 @@ atlas:
 
     orm:
         atlas:
-            transaction_class: 'Atlas\Orm\AutoCommit'
+            # transaction_class: 'Atlas\Orm\Transaction\AutoTransact'
+            # log_queries: false
 
     cli:
         config:

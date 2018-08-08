@@ -20,6 +20,7 @@ use Atlas\Cli\Logger;
 use Atlas\Cli\Skeleton;
 use Atlas\Orm\Atlas;
 use Atlas\Symfony\Command\SkeletonCommand;
+use Atlas\Symfony\DataCollector\AtlasCollector;
 
 /**
  * Atlas extension for Symfony.
@@ -52,6 +53,13 @@ class AtlasExtension extends Extension
 
         $containerBuilder->register(SkeletonCommand::class)
             ->addTag('console.command')
+            ->setAutowired(true);
+
+        $containerBuilder->register(AtlasCollector::class)
+            ->addTag('data_collector', [
+                'template' => '@Atlas/Collector/atlas.html.twig',
+                'id' => 'atlas.collector'
+            ])
             ->setAutowired(true);
     }
 }

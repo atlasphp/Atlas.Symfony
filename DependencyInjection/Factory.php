@@ -42,8 +42,12 @@ class Factory
         self::addConnections($connectionLocator, 'read', $config);
         self::addConnections($connectionLocator, 'write', $config);
 
-        $transactionClass = $config['atlas']['orm']['transaction_class']
+        $transactionClass = $config['orm']['atlas']['transaction_class']
             ?? AutoCommit::CLASS;
+        if ($transactionClass == 'Atlas\\Orm\\AutoCommit') {
+            // make allowance for a buggy config from earlier releases
+            $transactionClass = AutoCommit::CLASS;
+        }
         $builder->setTransactionClass($transactionClass);
 
         $factory = function ($class) use ($container) {
@@ -55,7 +59,13 @@ class Factory
         };
         $builder->setFactory($factory);
 
-        return $builder->newAtlas();
+        $atlas = $builder->newAtlas();
+
+        if ($config['orm']['atlas']['log_queries']) {
+            $atlas->logQueries();
+        }
+
+        return $atlas;
     }
 
     /**

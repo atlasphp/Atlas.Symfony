@@ -15,6 +15,7 @@ use Symfony\Component\Config\Definition\Builder\ArrayNodeDefinition;
 use Symfony\Component\Config\Definition\Builder\NodeDefinition;
 use Symfony\Component\Config\Definition\Builder\TreeBuilder;
 use Symfony\Component\Config\Definition\ConfigurationInterface;
+use Atlas\Orm\Transaction\AutoCommit;
 
 /**
  * Configuration for Symfony.
@@ -70,6 +71,10 @@ class Configuration implements ConfigurationInterface
                     ->arrayNode('atlas')
                         ->children()
                             ->scalarNode('transaction_class')
+                                ->defaultValue(AutoCommit::class)
+                            ->end()
+                            ->booleanNode('log_queries')
+                                ->defaultValue(false)
                             ->end()
                         ->end()
                     ->end()
