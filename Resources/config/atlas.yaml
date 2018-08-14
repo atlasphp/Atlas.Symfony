@@ -6,34 +6,48 @@ atlas:
                 dsn: '%env(resolve:ATLAS_PDO_DSN)%'
                 username: '%env(resolve:ATLAS_PDO_USERNAME)%'
                 password: '%env(resolve:ATLAS_PDO_PASSWORD)%'
+                # options:
+                #     !php/const PDO::ATTR_CASE: !php/const PDO::CASE_NATURAL
             read:
                 ### add named "read" connections here
                 # read1:
                 #     dsn:
                 #     username:
                 #     password:
+                #     options:
+                #         !php/const PDO::ATTR_CASE: !php/const PDO::CASE_NATURAL
                 # read2:
                 #     dsn:
                 #     username:
                 #     password:
+                #     options:
+                #         !php/const PDO::ATTR_CASE: !php/const PDO::CASE_NATURAL
                 # read3:
                 #     dsn:
                 #     username:
                 #     password:
+                #     options:
+                #         !php/const PDO::ATTR_CASE: !php/const PDO::CASE_NATURAL
             write:
                 ### add named "write" connections here
                 # write1:
                 #     dsn:
                 #     username:
                 #     password:
+                #     options:
+                #         !php/const PDO::ATTR_CASE: !php/const PDO::CASE_NATURAL
                 # write2:
                 #     dsn:
                 #     username:
                 #     password:
+                #     options:
+                #         !php/const PDO::ATTR_CASE: !php/const PDO::CASE_NATURAL
                 # write3:
                 #     dsn:
                 #     username:
                 #     password:
+                #     options:
+                #         !php/const PDO::ATTR_CASE: !php/const PDO::CASE_NATURAL
 
     orm:
         atlas:
@@ -47,6 +61,8 @@ atlas:
                     dsn: '%env(resolve:ATLAS_PDO_DSN)%'
                     username: '%env(resolve:ATLAS_PDO_USERNAME)%'
                     password: '%env(resolve:ATLAS_PDO_PASSWORD)%'
+                    # options:
+                    #     !php/const PDO::ATTR_CASE: !php/const PDO::CASE_NATURAL
                 directory: '%kernel.project_dir%/src/DataSource/'
                 namespace: App\DataSource
                 templates: '%kernel.project_dir%/resources/Atlas/templates/'

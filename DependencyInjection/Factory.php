@@ -116,7 +116,8 @@ class Factory
         return [
             $spec['dsn'] ?? null,
             $spec['username'] ?? null,
-            $spec['password'] ?? null
+            $spec['password'] ?? null,
+            $spec['options'] ?? []
         ];
     }
 }

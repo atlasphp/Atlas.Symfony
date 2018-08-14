@@ -47,6 +47,19 @@ In the `atlas.yaml` config file, these settings are notable:
   information, see the
   [transactions documentation](http://atlasphp.io/cassini/orm/transactions.html#1-1-6-2).
 
+- The `options` section under any connection configuration can be used to set
+  PDO attributes through the [PDO constructor](https://secure.php.net/manual/en/pdo.construct.php).
+  For example:
+
+    ```yaml
+    dsn: '%env(resolve:ATLAS_PDO_DSN)%'
+    username: '%env(resolve:ATLAS_PDO_USERNAME)%'
+    password: '%env(resolve:ATLAS_PDO_PASSWORD)%'
+    options:
+        !php/const PDO::EMULATE_PREPARES: false
+        !php/const PDO::ATTR_CASE: !php/const PDO::CASE_NATURAL
+    ```
+
 ## Getting Started
 
 ### Generating Mappers
