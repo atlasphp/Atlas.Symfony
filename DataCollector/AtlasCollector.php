@@ -19,7 +19,7 @@ class AtlasCollector extends DataCollector
     public function collect(
         Request $request,
         Response $response,
-        Exception $exception = null
+        \Throwable $exception = null
     ) {
         $this->data = $this->atlas->getQueries();
     }
